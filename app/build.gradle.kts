@@ -29,7 +29,9 @@ android {
             buildConfigField("String", "MINI_TALES_HOST", "\"192.168.10.34\"")
         }
     }
-
+    kotlinOptions {
+        jvmTarget = "17"
+    }
     buildFeatures {
         compose = true
         buildConfig = true

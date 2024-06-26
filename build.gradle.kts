@@ -1,11 +1,10 @@
+import com.android.build.gradle.AppExtension
+import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.LibraryExtension
-import com.android.build.gradle.AppExtension
+import com.android.build.gradle.LibraryPlugin
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import com.android.build.gradle.AppPlugin
-import com.android.build.gradle.LibraryPlugin
-import com.diffplug.gradle.spotless.JavaExtension
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
@@ -58,24 +57,19 @@ fun PluginContainer.applyDefaultConfig(project: Project) {
     whenPluginAdded {
         when (this) {
             is AppPlugin -> {
-                project.extensions
-                    .getByType<AppExtension>()
-                    .apply {
+                project.extensions.getByType<AppExtension>().apply {
                         defaultConfig()
                     }
             }
 
             is LibraryPlugin -> {
-                project.extensions
-                    .getByType<LibraryExtension>()
-                    .apply {
+                project.extensions.getByType<LibraryExtension>().apply {
                         defaultConfig()
                     }
             }
 
             is JavaPlugin -> {
-                project.extensions.getByType<JavaPluginExtension>()
-                    .apply {
+                project.extensions.getByType<JavaPluginExtension>().apply {
                         sourceCompatibility = JavaVersion.VERSION_17
                         targetCompatibility = JavaVersion.VERSION_17
                     }

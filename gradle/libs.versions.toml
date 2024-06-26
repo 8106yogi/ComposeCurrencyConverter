@@ -1,35 +1,35 @@
 [versions]
 #plugins
-androidApplication = "8.2.2"
+androidApplication = "8.5.0"
 kotlinAndroid = "1.9.20"
 ktlint = "11.6.0"
-kotlinJvm = "1.8.10"
-androidLibrary = "8.2.2"
+kotlinJvm = "1.9.0"
+androidLibrary = "8.5.0"
 kotlinSerialization = "1.9.0"
-hilt = "2.48.1"
+hilt = "2.49"
 protobuf = "0.9.4"
 retrofit = "2.9.0"
 retrofit_converter = "2.9.0"
 
 #libraries
-core = "1.12.0"
+core = "1.13.1"
 ktorClientAndroid = "2.3.5"
 ktorClientContentNegotiation = "2.3.5"
 ktorClientLogging = "2.3.5"
-lifecycleRuntime = "2.7.0"
-activityCompose = "1.8.2"
-composeBom = "2024.01.00"
+lifecycleRuntime = "2.8.2"
+activityCompose = "1.9.0"
+composeBom = "2024.06.00"
 composeConstraintLayout = "1.0.1"
 ktor = "2.3.5"
-dataStore = "1.0.0"
-composeNavigation = "2.7.6"
-hiltComposeNavigation = "1.1.0"
+dataStore = "1.1.1"
+composeNavigation = "2.7.7"
+hiltComposeNavigation = "1.2.0"
 protobufJavaLite = "3.25.0"
 kotlinCoroutines = "1.7.3"
 
 junit = "4.13.2"
-androidxJunit = "1.1.5"
-espressoCore = "3.5.1"
+androidxJunit = "1.2.0"
+espressoCore = "3.6.0"
 
 timber = "5.0.1"
 spotless = "6.19.0"
@@ -37,8 +37,8 @@ googleTruth = "1.1.4"
 
 #others
 kotlinCompilerExtensionVersion = "1.5.4"
-appcompat = "1.6.1"
-material = "1.11.0"
+appcompat = "1.7.0"
+material = "1.12.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core" }
