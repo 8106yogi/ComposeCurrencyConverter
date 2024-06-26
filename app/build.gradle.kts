@@ -7,10 +7,10 @@ plugins {
 }
 
 android {
-    namespace = "com.test.paypaytest"
+    namespace = "com.test.currencyconverter"
 
     defaultConfig {
-        applicationId = "com.test.paypaytest"
+        applicationId = "com.test.currencyconverter"
         versionCode = 1
         versionName = "1.0"
     }
@@ -22,11 +22,11 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            buildConfigField("String", "MINI_TALES_HOST", "\"not given\"")
+            buildConfigField("String", "BASE_URL", "\"not given\"")
         }
 
         debug {
-            buildConfigField("String", "MINI_TALES_HOST", "\"192.168.10.34\"")
+            buildConfigField("String", "BASE_URL", "\"https://openexchangerates.org/api/\"")
         }
     }
     kotlinOptions {

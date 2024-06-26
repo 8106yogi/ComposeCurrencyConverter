@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.test.paypaytest.theme"
+    namespace = "com.test.currencyconverter.theme"
 
     buildFeatures {
         compose = true
