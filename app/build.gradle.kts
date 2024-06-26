@@ -44,24 +44,24 @@ android {
 
 dependencies {
     implementation(projects.theme)
-    implementation(projects.network)
-    implementation(projects.storage)
-    implementation(projects.common)
-    implementation(projects.common.data)
-    implementation(projects.common.domain)
+    //   implementation(projects.network)
+    //   implementation(projects.storage)
+    //   implementation(projects.common)
+    //   implementation(projects.common.data)
+    //   implementation(projects.common.domain)
 
-    implementation(projects.features.auth)
-    implementation(projects.features.auth.data)
-    implementation(projects.features.auth.domain)
+    //   implementation(projects.features.auth)
+//    implementation(projects.features.auth.data)
+    //   implementation(projects.features.auth.domain)
 
-    implementation(projects.features.home)
-    implementation(projects.features.home.data)
-    implementation(projects.features.home.domain)
+    // implementation(projects.features.home)
+    //  implementation(projects.features.home.data)
+    //   implementation(projects.features.home.domain)
 
 
-    implementation(projects.features.writestory)
-    implementation(projects.features.writestory.data)
-    implementation(projects.features.writestory.domain)
+//    implementation(projects.features.writestory)
+    //   implementation(projects.features.writestory.data)
+    //   implementation(projects.features.writestory.domain)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
