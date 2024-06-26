@@ -28,7 +28,7 @@ import com.test.paypaytest.theme.components.ThemePreview
 
 @ThemePreview
 @Composable
-fun MainScreen() {
+fun MainScreen(items: List<String>) {
     PayPayTheme {
         Column(
             modifier = Modifier
@@ -43,18 +43,20 @@ fun MainScreen() {
                 value = "2222",
                 modifier = Modifier.fillMaxWidth(),
             )
-            Demo_ExposedDropdownMenuBox()
+            Demo_ExposedDropdownMenuBox(items)
         }
-
     }
 }
 
 @Composable
-fun Demo_ExposedDropdownMenuBox() {
+fun Demo_ExposedDropdownMenuBox(items: List<String>) {
     val context = LocalContext.current
-    val coffeeDrinks = arrayOf("Americano", "Cappuccino", "Espresso", "Latte", "Mocha")
+    //   val coffeeDrinks = arrayOf("Americano", "Cappuccino", "Espresso", "Latte", "Mocha")
     var expanded by remember { mutableStateOf(false) }
-    var selectedText by remember { mutableStateOf(coffeeDrinks[0]) }
+
+    var selectedText by remember {
+        mutableStateOf("Select Currency")
+    }
 
     Row(
         modifier = Modifier
@@ -74,14 +76,16 @@ fun Demo_ExposedDropdownMenuBox() {
                 onValueChange = {},
                 readOnly = true,
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                modifier = Modifier.menuAnchor().wrapContentWidth()
+                modifier = Modifier
+                    .menuAnchor()
+                    .wrapContentWidth()
             )
 
             ExposedDropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false }
             ) {
-                coffeeDrinks.forEach { item ->
+                items.forEach { item ->
                     DropdownMenuItem(
                         text = { Text(text = item) },
                         onClick = {

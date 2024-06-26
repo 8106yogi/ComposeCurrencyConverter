@@ -36,6 +36,8 @@ android {
         aidl = true
 
     }
+    compileSdk = 34
+    buildToolsVersion = "30.0.3"
 }
 
 dependencies {

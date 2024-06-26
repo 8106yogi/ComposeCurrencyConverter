@@ -1,15 +1,13 @@
 package com.test.paypaytest.repository
 
 import android.content.Context
-import android.media.AudioTrack
-import android.media.MediaParser
-import android.util.Log
 import com.google.gson.Gson
 import com.test.paypaytest.api.ApiService
 import com.test.paypaytest.models.Latest
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -22,27 +20,25 @@ class MainRepository @Inject constructor(
         get() = _currencies
 
 
-
     private val _latest: MutableStateFlow<Latest?> = MutableStateFlow(null)
     val latest: StateFlow<Latest?>
         get() = _latest
 
 
-
-
     suspend fun getCurrencies() {
 
         try {
-//            val response = apiService.getCurrencies("8df6a4a68c664aa59597436b5b738640")
-//            if (response.value?.isSuccessful == true && response.value?.body() != null) {
-//                //    _currencies.emit(response.value?.body()!!)
-//                _currencies.postValue(response.value)
-//            }
+            val response = apiService.getCurrencies("8df6a4a68c664aa59597436b5b738640")
+            Timber.d(javaClass.canonicalName, "getCurrencies: $response")
+            //    if (response.value?.isSuccessful == true && response.value?.body() != null) {
+            //    _currencies.emit(response.value?.body()!!)
+            //      _currencies.emit(response.value!!.body() as List<String>?)
+            //    }
             delay(1000)
-            _currencies.emit(readCurrencyFromJson(context))
-
+//            _currencies.emit(readCurrencyFromJson(context))
+            _currencies.emit(response.keys.toList())
         } catch (e: Exception) {
-            Log.d(javaClass.canonicalName, "getCurrencies: $e")
+            Timber.d(javaClass.canonicalName, "getCurrencies: $e")
         }
     }
 
@@ -58,12 +54,9 @@ class MainRepository @Inject constructor(
             _latest.emit(readLatestFromJson(context))
 
         } catch (e: Exception) {
-            Log.d(javaClass.canonicalName, "latest: $e")
+            Timber.d(javaClass.canonicalName, "latest: $e")
         }
     }
-
-
-
 
 
     private fun readCurrencyFromJson(context: Context): List<String>? {

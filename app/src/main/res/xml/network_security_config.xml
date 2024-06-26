@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config>
-        <domain includeSubdomains="true">openexchangerates.org</domain>
+        <domain includeSubdomains="true">openexchangerates.org/</domain>
         <trust-anchors>
             <certificates src="@raw/openexchangerates_org"/>
         </trust-anchors>

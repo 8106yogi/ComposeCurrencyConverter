@@ -12,11 +12,9 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.KeyStore
-import java.security.SecureRandom
 import java.security.cert.CertificateFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import javax.net.ssl.KeyManagerFactory
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManagerFactory
 import javax.net.ssl.X509TrustManager
@@ -32,13 +30,24 @@ class NetworkModule {
         return context
     }
 
+    @Singleton
+    @Provides
+    fun provideHttpClient(): OkHttpClient {
+        return OkHttpClient
+            .Builder()
+            .readTimeout(15, TimeUnit.SECONDS)
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .build()
+    }
 
     @Provides
     @Singleton
-    fun providesRetrofit(@ApplicationContext context: Context): Retrofit {
+    fun providesRetrofit(
+        okHttpClient: OkHttpClient
+    ): Retrofit {
         return Retrofit.Builder().baseUrl("https://openexchangerates.org/api/")
             .addConverterFactory(GsonConverterFactory.create())
-          .client(generateSecureOkHttpClient(context))
+            .client(okHttpClient)
             .build()
     }
 
@@ -60,7 +69,7 @@ class NetworkModule {
         // Here you may wanna add some headers or custom setting for your builder
         // create self-signed server certificate
         val cf = CertificateFactory.getInstance("X.509")
-        val cert = context?.resources?.openRawResource(R.raw.openexchangerates_org)
+        val cert = context.resources?.openRawResource(R.raw.openexchangerates_org)
         try {
             val ca = cf.generateCertificate(cert)
             val keyStoreType = KeyStore.getDefaultType()
